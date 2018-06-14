@@ -10,18 +10,59 @@
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' integrity='sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB'
         crossorigin='anonymous'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
     <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=' crossorigin='anonymous'></script>
 </head>
 
-<body class="bg-dark">
-    <h1 class="p-3 bg-light border-bottom border-primary">
-        GifTastic Page
-        <input type="text" id="searchTXT">
-        <button id="submitButton">Add a Button!</button>
-        <button id="searchPage"><i class="fa fa-search"></i></button>
-        <button id="favoritesPage"><i class="fa fa-star"></i></button>
-    </h1>
+<style>
+    .topRightBorderRadius {
+        border-top-right-radius: .25rem !important;
+    }
 
+    @media screen and (max-width: 425px) {
+        .row {
+            text-align: center;
+        }
+        .gifContent {
+            margin: 10px 5% !important;
+            width: 90%;
+        }
+        p {
+            font-size: 13px;
+        }
+        img {
+            max-width: 220px;
+        }
+        #gifsPage {
+            align-content: center;
+        }
+    }
+</style>
+
+<body class="bg-dark">
+    <div class="mb-3 bg-light clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <h1>GifTastic Page</h1>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-3">
+                    <button id="favoritesPage">
+                        <i class="fa fa-star"></i> My Favorites</button>
+                    <button id="gifsPage">
+                        <i class="fa fa-search"></i> Gifs Page</button>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-3">
+                    <form>
+                        <input type="text" id="searchTXT" placeholder="Type Here!">
+                        <input type="submit" value="Add a Button!" id="submitButton">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
     <div id="buttonList" class="mb-5"></div>
     <div id="gifList"></div>
 </body>
