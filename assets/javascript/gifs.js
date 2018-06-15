@@ -83,13 +83,15 @@ $("document").ready(function () {
 
     $("#gifsPage").on("click", function () {
         $("#buttonList").show();
-        $("#gifList").show();
+        $("#gifList").empty();
+        offset = -OFFSET_RANGE_AND_LIMIT;
         renderButtons();
     });
 
     $("#favoritesPage").on("click", function () {
         $("#buttonList").hide();
-        $("#gifList").hide();
+        $("#gifList").empty();
+        offset = -OFFSET_RANGE_AND_LIMIT;
         if (favorites.length > 0) {
             $.ajax({
                 url: "https://api.giphy.com/v1/gifs?api_key=JsOrk4DPRptpQzXrA30BBPvS3D44I8Gz&ids=" + localStorage.getItem("favorites_raw"),
