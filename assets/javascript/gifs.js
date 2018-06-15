@@ -6,13 +6,14 @@ var name = '';
 var redButton = "favorite btn btn-danger ml-2 float-right rounded-0 ";
 var greenButton = "favorite btn btn-success ml-2 float-right rounded-0";
 var starIcon = "";
+var offset = -OFFSET_RANGE_AND_LIMIT;
 if (!Array.isArray(favorites)) {
     favorites = [];
 }
-console.log(favorites);
+// console.log(favorites);
 
 
-var offset = -OFFSET_RANGE_AND_LIMIT, name = '';
+
 function displayResponse(response) {
     for (var g = 0; g < response.data.length; g++) {
         var imageSRC = response.data[g].images.fixed_height_still.url;
@@ -34,18 +35,18 @@ function displayResponse(response) {
 
 function display(q) {
     if (!name) {
-        console.log("Inintialized name")
+        // console.log("Inintialized name");
         name = q;
     }
     console.log(q, "|", name)
     if (q !== name) {
         $("#gifList").empty();
         offset = 0;
-        console.log("reset offset to 0");
+        // console.log("reset offset to 0");
         name = q;
     } else {
         offset += OFFSET_RANGE_AND_LIMIT;
-        console.log("extending offset")
+        // console.log("extending offset")
     }
 
     $.ajax({
@@ -71,7 +72,7 @@ $("document").ready(function () {
     $("#submitButton").on("click", function (event) {
         event.preventDefault();
         var newThing = $("#searchTXT").val().trim();
-        console.log("Submitted " + newThing);
+        // console.log("Submitted " + newThing);
         if (!(things.includes(newThing)) && newThing != '') {
             things.push(newThing);
             renderButtons();
@@ -105,10 +106,10 @@ $("document").ready(function () {
         // console.log(this.src);
         if (this.src.includes("_s")) {
             var newSrc = this.src.slice(0, -6) + '.gif';
-            console.log("To Animated", newSrc);
+            // console.log("To Animated", newSrc);
         } else {
             newSrc = this.src.slice(0, -4) + '_s.gif';
-            console.log("To Still", newSrc);
+            // console.log("To Still", newSrc);
         }
         this.src = newSrc;
 
@@ -122,13 +123,13 @@ $("document").ready(function () {
                 favorites.push(image_data);
                 localStorage.setItem("favorites", JSON.stringify(favorites));
                 localStorage.setItem("favorites_raw", favorites);
-                console.log("added ", image_data);
+                // console.log("added ", image_data);
             } else {//After removing from favorites
                 $(this).text("Favorite").attr("class", greenButton);
                 favorites.splice(favorites.indexOf(image_data), 1);
                 localStorage.setItem("favorites", JSON.stringify(favorites));
                 localStorage.setItem("favorites_raw", favorites);
-                console.log("removed ", image_data);
+                // console.log("removed ", image_data);
             }
 
         })
